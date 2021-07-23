@@ -127,7 +127,7 @@ defmodule RabbitMQMessageDeduplication.Cache do
   """
   @spec info(atom) :: list
   def info(cache) do
-    info = if Mnesia.table_info(cache, :memory) == undefined do
+    info = if Mnesia.table_info(cache, :memory) == :undefined do
             [
               bytes: 0,
               entries: 0
