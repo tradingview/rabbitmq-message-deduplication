@@ -132,7 +132,7 @@ defmodule RabbitMQMessageDeduplication.Cache do
               bytes: 0,
               entries: 0
             ]
-          else do
+          else 
             [
               bytes: Mnesia.table_info(cache, :memory) * Erlang.system_info(:wordsize),
               entries: Mnesia.table_info(cache, :size)
