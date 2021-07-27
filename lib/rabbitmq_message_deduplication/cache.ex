@@ -218,9 +218,9 @@ defmodule RabbitMQMessageDeduplication.Cache do
   # List the nodes on which to create the cache replicas.
   # Cache is replicated on two-third of the cluster nodes.
   defp cache_replicas() do
-    nodes = [Node.self() | Node.list()]
+    nodes = [Node.self() | Node.list()] 
     # ensure that we have at least one replica for 2 nodes cluster
-    ncount = min(length(nodes), 2)
-    nodes |> Enum.split(round((ncount * 2) / 3)) |> elem(0)
+    num_split = round(((length(nodes) + 1) * 2) / 3)
+    nodes |> Enum.split(num_split) |> elem(0)
   end
 end
